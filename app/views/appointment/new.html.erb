@@ -1,0 +1,17 @@
+<%= form_tag(action: :schedule_appointemnet) do |form| %>
+  <div>
+    Doctor Name: <%= @doctor.name %>
+  </div>
+   <div>
+    Doctor Specialisation: <%= @doctor.specialisation %>
+   </div>
+    <%= hidden_field_tag   'appointement[patient_id]', @patient.id %>
+    <%= hidden_field_tag 'appointement[doctor_id]', @doctor.id %>
+  <div>
+    Date & Time
+    <input type="datetime-local" id="meeting-time" name="appointement[appointment_date]" required>
+  </div>
+  <div>
+    <%= button_tag 'Schedule Appointement' %>
+  </div>
+<% end %>

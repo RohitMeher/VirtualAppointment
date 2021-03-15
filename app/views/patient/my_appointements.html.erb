@@ -1,0 +1,26 @@
+<% if @appointments.size > 0%>
+  <table style="width:100%">
+  <tr>
+      <th>Doctor Name</th>
+      <th>Doctor Email Address</th>
+      <th>Doctor Specialisation</th>
+      <th>Scheduled date & time</th>
+  </tr>
+  <% @appointments.each do |appointment|%>
+      <tr>
+          <td> <%= appointment.doctor.name  %> </td>
+          <td> <%= appointment.doctor.email_address %> </td>
+          <td> <%= appointment.doctor.specialisation %> </td>    
+          <td> <%= appointment.appointment_date %> </td>
+          <td> 
+          <%= form_tag('/cancel_appointement', method: 'delete') do |form| %>
+              <%= hidden_field_tag   'appointement[appointement_id]', appointment.id %>
+              <%= button_tag "Cancel Appointement" %>
+          <% end %>
+          <td>    
+      </tr>    
+  <% end %>
+  </table>
+<% else %>
+  <h4> No Appointements were scheduled</h4>
+<% end %>

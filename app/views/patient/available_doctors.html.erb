@@ -1,0 +1,24 @@
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Email Address</th>
+    <th>Specialisation</th>
+  </tr>
+  <% @doctors.each do |doctor|%>
+    <tr>
+        <td> <%= doctor.name  %> </td>
+        <td> <%= doctor.email_address %> </td>
+        <td> <%= doctor.specialisation %> </td>    
+        <td> 
+          <%= form_tag('/appointemnet/new', method: 'get') do |form| %>
+            <%= hidden_field_tag 'appointement[patient_id]', @patient.id %>
+            <%= hidden_field_tag 'appointement[doctor_id]', doctor.id %>
+            <%= button_tag "Schedule Appointement" %>
+          <% end %>
+        <td>    
+    </tr>    
+  <% end %>
+</table>
+
+
+  

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VirtualAppointment</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%
+=begin%>
+ <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %> 
+<%
+=end%>
+  </head>
+
+  <body>
+    <% flash.each do |name, msg| %>
+      <% if name == "notice" %>
+        <%= content_tag :div, msg, style: "color:green" %>
+      <% elsif name == "error" %>
+        <%= content_tag :div, msg, style: "color:red" %>
+      <% end %>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
